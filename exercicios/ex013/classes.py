@@ -1,32 +1,16 @@
-from abc import ABC, abstractmethod
-
-class Animal(ABC):
-    def __init__(self, nome:str = ''):
+class Mãe():
+    def __init__(self,nome = 'Mamãe'):
         self.nome = nome
 
-    @abstractmethod
-    def emitir_som(self):
-        print(f'{self.nome} é {self.__class__.__name__} e está emitindo um som')
+    def fazer_pudim(self):
+        print(f'{self.nome} faz PUDIM com leite condensado e calda')
+    def fritar_coxinha(self):
+        print(f'{self.nome} faz COXINHA no óleo de soja')
 
-class Pato(Animal):
-    def emitir_som(self):
-        print(f'{self.nome} quak quak')
+class Filha(Mãe):
+    def fazer_pudim(self):
+        print(f'{self.nome} faz PUDIM com leite Ninho com Nutella')
 
-class Cachorro(Animal):
-    def emitir_som(self):
-        print(f'{self.nome} Au Au Au')
-
-class Pitbull(Cachorro):
-     def emitir_som(self):
-             print(f'{self.nome} Aaaaaaaaah vou te matar')
-
-class Spitz(Cachorro):
-     pass
-
-class Gato(Animal):
-    def emitir_som(self):
-            print(f'{self.nome} MIauuuuuu MIAIIIIaaaaaaauuuu')
-
-class Galinha(Animal):
-    def emitir_som(self):
-            print(f'{self.nome} co co  oco coc')
+class Filho(Mãe):
+    def fritar_coxinha(self):
+        print(f'{self.nome} frita COXINHA na Air Fryer')
