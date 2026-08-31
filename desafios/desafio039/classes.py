@@ -12,9 +12,9 @@ class Usuário(Validador):
     def validar(self,usuario:str):
         if 5<= len(usuario) <= 20:
             if usuario == usuario.lower():
-                return True
+                print(True)
             else:
-                return False
+                print(False)
             
 
 
@@ -24,10 +24,16 @@ class Email(Validador):
     
     def validar(self,email):
 
-        if email.count('@') == 1:
+        if ' ' in email:
+            self.p -= 1 
+        if email.count('@') == 1 and email.index('@') != 0:
+            self.p += 1
+        if email.count(self.string.punctuation) <= 2:
+            self.p += 1
+        if email[-4] == '.':
             self.p += 1
 
-        if self.p == 1:
+        if self.p == 3:
             print(True)
         else:
             print(False)
@@ -39,6 +45,8 @@ class Senha(Validador):
     
     def validar(self,senha:str):
 
+        if any(c.isdigit() for c in senha):
+            self.p += 1
         if len(senha) >= 8:
             self.p += 1
         if any(c.isupper() for c in senha):
@@ -48,7 +56,10 @@ class Senha(Validador):
         if any(c in self.string.punctuation for c in senha):
             self.p += 1
 
-        if self.p == 4:
-            return True
+        if self.p == 5:
+            print(True)
         else:
-            return False
+            print(False)
+
+def validar_dado(validador:Validador, valor:str):
+    validador.validar(valor)
