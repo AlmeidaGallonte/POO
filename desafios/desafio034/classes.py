@@ -9,9 +9,10 @@ class Funcionario(ABC):
     @property
     def salario(self):
          return self._salario
+    
     @salario.setter
     def salario(self, valor):
-         if valor > self._salario:
+         if valor >= self._salario:
             self._salario = valor
          else:
              print(f'[red]ERRO:tentativa de mudar salario pra {valor}. Não pode reduzir salario de um Funcionario![/]')
@@ -19,30 +20,25 @@ class Funcionario(ABC):
     def calcular_bonus(self):
         pass
 
-class Gerente(Funcionario):
     def __str__(self):
-        return f'{self.nome} ganha R${self._salario:.2f} e por ser {self.__class__.__name__}o bônus será de R${self.salario * 15 / 100:.2f}'
+            return f'{self.nome} ganha R${self._salario:,.2f} e por ser {self.__class__.__name__} o bônus será de R${self.calcular_bonus():,.2f}'
 
+class Gerente(Funcionario):
     def calcular_bonus(self):
-        self.salario = self.salario + (self.salario * 15 / 100)
-        return self._salario
+        return self.salario * 0.15
+
 
     
 class Desingner(Funcionario):
-    def __str__(self):
-        return f'{self.nome} ganha R${self._salario:.2f} e por ser {self.__class__.__name__}o bônus será de R${self.salario * 8 / 100:.2f}'
     def calcular_bonus(self):
-           self.salario = self.salario + (self.salario * 8 / 100)
-           return self._salario
+           return self.salario * 0.08
+        
 
 
 class Desenvolvedor(Funcionario):
-    def __str__(self):
-        return f'{self.nome} ganha R${self._salario:.2f} e por ser {self.__class__.__name__}o bônus será de R${self.salario * 10 / 100:.2f}'
-    
     def calcular_bonus(self):
-        self.salario = self.salario + (self.salario * 10 / 100)
-        return self._salario
+        return self.salario * 0.10
+        
 
     
 def tentar_bonus(obj):

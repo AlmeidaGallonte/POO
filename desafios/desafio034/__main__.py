@@ -3,16 +3,15 @@ from rich import print
 
 def main():
 
-    a = Gerente('Marcio', 1000)
-    b = Desenvolvedor('Jamerson', 1000)
-    c = Desingner('Luna', 1000)
+    funcionarios = [
 
-    b.salario = 1500
-    a.salario = 900
-    
-    print(a)
-    print(b)
-    print(c)
+        Desenvolvedor('Pedro', 18_000),
+        Desingner('José', 25_000),
+        Gerente('Mariana', 45_000)
+    ]
+
+    for f in funcionarios:
+        print(f)
 
 if __name__ == '__main__':
     main()

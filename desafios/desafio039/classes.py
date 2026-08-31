@@ -2,21 +2,16 @@ from abc import ABC, abstractmethod
 from rich import print
 
 class Validador(ABC):
-
     @abstractmethod
     def validar(self):
         pass
-
 class Usuário(Validador):
-
     def validar(self,usuario:str):
         if 5<= len(usuario) <= 20:
             if usuario == usuario.lower():
                 print(True)
             else:
                 print(False)
-            
-
 
 class Email(Validador):
     import string
@@ -38,13 +33,11 @@ class Email(Validador):
         else:
             print(False)
 
-
 class Senha(Validador):
     import string
     p = 0
-    
-    def validar(self,senha:str):
 
+    def validar(self,senha:str):
         if any(c.isdigit() for c in senha):
             self.p += 1
         if len(senha) >= 8:

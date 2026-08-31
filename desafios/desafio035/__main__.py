@@ -1,11 +1,11 @@
 from classes import *
+from rich import print, inspect
 
 def main():
-    a1 = DOC('prova', 250_000)
-    a2 = PDF('contrato', 1_300_000)
-
-    abrir_aquivo(a2)
-    abrir_aquivo(a1)
+    a2 = PDF('conta', 1_550_000)
+    a1 = DOC('prova', 550_000)
+    abrir_arquivo(a1)
+    abrir_arquivo(a2)
     
 if __name__ == '__main__':
     main()
